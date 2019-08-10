@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% load static from staticfiles %}
+
+{% block title %}{{ block.super }} - {{ mineral.name }} {% endblock %}
+{% block content %}
+    <div class="grid-75 mineral__container">
+      <h1 class="mineral__name">{{ mineral.name|title }}</h1>
+      <div class="mineral__image-bg">
+        <img class="mineral__image" src="{% static "images"%}/{{ mineral.image_filename }}">
+        <p class="mineral__caption">{{ mineral.image_caption }}</p>
+      </div>
+      <div class="mineral__table-container">
+        <table class="mineral__table">
+            {% for attribute in attributes %}
+                <tr>
+                    <td class="mineral__category">{{ attribute.key|title }}</td>
+                    <td>{{ attribute.value|safe }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+      </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ block.super }} - More Minerals than you thought existed {% endblock %}
+
+{% block content %}
+<div class="grid-75">
+  <ul class="minerals__container">
+  {% for mineral in minerals %}
+      <li class="minerals__item">
+      <a href="{% url "detail" pk=mineral.pk %}">{{ mineral.name }}</a>
+      </li>
+  {% endfor %}
+  </ul>
+</div>
+{% endblock %}
